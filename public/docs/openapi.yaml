@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: Canoe_test
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8001'
+paths:
+  /api/funds:
+    get:
+      summary: ''
+      operationId: getApiFunds
+      description: ''
+      parameters:
+        -
+          in: query
+          name: name
+          description: 'Filter by fund name'
+          example: temporibus
+          required: false
+          schema:
+            type: string
+            description: 'Filter by fund name'
+            example: temporibus
+        -
+          in: query
+          name: fund_manager_id
+          description: 'Filter funds by manager id'
+          example: 9
+          required: false
+          schema:
+            type: integer
+            description: 'Filter funds by manager id'
+            example: 9
+        -
+          in: query
+          name: start_year
+          description: 'Filter by fund start year'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Filter by fund start year'
+            example: 1
+      responses:
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The selected fund manager id is invalid. (and 1 more error)'
+                  errors:
+                    fund_manager_id:
+                      - 'The selected fund manager id is invalid.'
+                    start_year:
+                      - 'The start year field must be at least 1900.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The selected fund manager id is invalid. (and 1 more error)'
+                  errors:
+                    type: object
+                    properties:
+                      fund_manager_id:
+                        type: array
+                        example:
+                          - 'The selected fund manager id is invalid.'
+                        items:
+                          type: string
+                      start_year:
+                        type: array
+                        example:
+                          - 'The start year field must be at least 1900.'
+                        items:
+                          type: string
+      tags:
+        - Funds
+      security: []
+    post:
+      summary: ''
+      operationId: postApiFunds
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Funds
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Update fund name'
+                  example: delectus
+                fund_manager_id:
+                  type: integer
+                  description: 'Update fund manager id'
+                  example: 13
+                start_year:
+                  type: integer
+                  description: 'Update fund start year'
+                  example: 19
+      security: []
+  '/api/funds/{id}':
+    put:
+      summary: ''
+      operationId: putApiFundsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Funds
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Update fund name'
+                  example: at
+                fund_manager_id:
+                  type: integer
+                  description: 'Update fund manager id'
+                  example: 2
+                start_year:
+                  type: integer
+                  description: 'Update fund start year'
+                  example: 11
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the fund.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Funds
+    description: 'Fund query and update endpoints'

@@ -1,0 +1,173 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8001"
+        }
+    ],
+    "info": {
+        "name": "Canoe_test",
+        "_postman_id": "8ca58f28-98ff-4ad4-8747-4bd3179f90e7",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Funds",
+            "description": "Fund query and update endpoints",
+            "item": [
+                {
+                    "name": "GET api\/funds",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/funds",
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": "temporibus",
+                                    "description": "Filter by fund name",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "fund_manager_id",
+                                    "value": "9",
+                                    "description": "Filter funds by manager id",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "start_year",
+                                    "value": "1",
+                                    "description": "Filter by fund start year",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/funds?name=temporibus&fund_manager_id=9&start_year=1"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 422,
+                            "body": "{\"message\":\"The selected fund manager id is invalid. (and 1 more error)\",\"errors\":{\"fund_manager_id\":[\"The selected fund manager id is invalid.\"],\"start_year\":[\"The start year field must be at least 1900.\"]}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/funds",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/funds",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/funds"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"delectus\",\"fund_manager_id\":13,\"start_year\":19}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PUT api\/funds\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/funds\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/funds\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the fund."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"at\",\"fund_manager_id\":2,\"start_year\":11}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
